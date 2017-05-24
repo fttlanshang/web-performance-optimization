@@ -59,7 +59,7 @@ gulp.task('clean', function(cb) {
     del(['dist/css', 'dist/js', 'dist/img','dist/views/css', 'dist/views/js','dist/views/images'], cb);
 });
 
-gulp.task('default',['clean'], function() {
+gulp.task('default', function() {
     gulp.start('styles', 'scripts', 'images', 'view-styles', 'view-scripts', 'view-images');
 });
 
