@@ -14,7 +14,20 @@
         header p { padding-left: 4.5em;}
       }
     </style>
-
+    <script type="text/javascript">
+        WebFontConfig = {
+          google: { families: [ 'Open+Sans:400,700'] }
+        };
+        (function() {
+          var wf = document.createElement('script');
+          wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+            '://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js';
+          wf.type = 'text/javascript';
+          wf.async = 'true';
+          var s = document.getElementsByTagName('script')[0];
+          s.parentNode.insertBefore(wf, s);
+        })();
+    </script>
     <script>
       (function(w,g){w['GoogleAnalyticsObject']=g;
       w[g]=w[g]||function(){(w[g].q=w[g].q||[]).push(arguments)};w[g].l=1*new Date();})(window,'ga');
@@ -76,20 +89,7 @@
           }
         });
       </script> --><!-- 非常奇怪，之前还能有86分，现在变好了，反而只有69分了。 -->
-      <script type="text/javascript">
-        WebFontConfig = {
-          google: { families: [ 'Open+Sans:400,700'] }
-        };
-        (function() {
-          var wf = document.createElement('script');
-          wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
-            '://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js';
-          wf.type = 'text/javascript';
-          wf.async = 'true';
-          var s = document.getElementsByTagName('script')[0];
-          s.parentNode.insertBefore(wf, s);
-        })();
-    </script>
+
     </div>
   </body>
 </html>
