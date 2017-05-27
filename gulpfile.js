@@ -25,7 +25,7 @@ gulp.task('view-styles', function(){
 });
 
 gulp.task('scripts', function() {
-    return gulp.src('srcc/js/perfmatters.js')
+    return gulp.src('src/js/perfmatters.js')
         .pipe(uglify())
         .pipe(gulp.dest('dist/js'))
         .pipe(notify({ message: 'scripts task compeleted'}));
