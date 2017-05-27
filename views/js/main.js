@@ -437,7 +437,7 @@ var resizePizzas = function(size) {
 
   // Iterates through pizza elements on the page and changes their widths
   function changePizzaSizes(size) {
-    var containers = document.querySelectorAll(".randomPizzaContainer");
+    var containers = document.getElementsByClassName("randomPizzaContainer");
     var newwidth = sizeSwitcher(size) + '%';
     for (var i = 0; i < containers.length; i++) {
       containers[i].style.width = newwidth;
@@ -489,14 +489,10 @@ function updatePositions() {
   frame++;
   window.performance.mark("mark_start_frame");
   var scrollPosition = document.body.scrollTop / 1250;
-  var items = document.querySelectorAll('.mover');
+  var items = document.getElementsByClassName('mover');
   for (var i = 0; i < items.length; i++) {
     var phase = Math.sin(scrollPosition + (i % 5));
-    var temp =  items[i].basicLeft + 100 * phase + 'px';
-    // items[i].style.left = temp;
-    items[i].style.transform = "translateX(" + temp + ")";
-     // when using transform property, the browser don't need to repaint the pizza, but now the moving trace is a little different.
-     // but I did't see the big improvement for using tranform.
+    items[i].style.left = items[i].basicLeft + 100 * phase + 'px';
   }
 
   // User Timing API to the rescue again. Seriously, it's worth learning.
@@ -516,13 +512,16 @@ window.addEventListener('scroll', updatePositions);
 document.addEventListener('DOMContentLoaded', function() {
   var cols = 8;
   var s = 256;//length or distance
-  for (var i = 0; i < 200; i++) {
+  var height = window.screen.height; //dynamically get the device height to determine how many pizzas are needed
+  var numOfPizzas = Math.ceil(height / s) * cols;
+  for (var i = 0; i <= numOfPizzas; i++) {
     var elem = document.createElement('img');
     elem.className = 'mover';
     elem.src = "images/pizza.png";
     elem.style.height = "100px";
     elem.style.width = "73.333px";
     elem.basicLeft = (i % cols) * s;
+    // elem.style.left = elem.basicLeft;//added here
     elem.style.top = (Math.floor(i / cols) * s) + 'px';
     document.getElementById("movingPizzas1").appendChild(elem);
   }

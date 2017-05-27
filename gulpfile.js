@@ -11,48 +11,54 @@ var gulp = require('gulp'),
     del = require('del');
 
 gulp.task('styles', function(){
-    return gulp.src('css/*.css')
+    return gulp.src('src/css/*.css')
         // .pipe(rename({suffix:'.min'})) //think rename is better, but I need to modidy the links in html files
         .pipe(minifycss())
         .pipe(gulp.dest('dist/css'))
         .pipe(notify({message: 'style task compeleted'}));
 });
 gulp.task('view-styles', function(){
-    return gulp.src('views/css/*.css')
+    return gulp.src('src/views/css/*.css')
         .pipe(minifycss())
         .pipe(gulp.dest('dist/views/css'))
         .pipe(notify({message: 'view-style task compeleted'}));
 });
 
 gulp.task('scripts', function() {
-    return gulp.src('js/perfmatters.js')
-        // .pipe(jshint('.jshintrc')) // error here, optional choice for this project
-        // .pipe(jshint.reporter('default'))
-        // .pipe(gulp.dest('dist/js'))
+    return gulp.src('srcc/js/perfmatters.js')
         .pipe(uglify())
         .pipe(gulp.dest('dist/js'))
         .pipe(notify({ message: 'scripts task compeleted'}));
 });
 
 gulp.task('view-scripts', function() {
-    return gulp.src('views/js/*.js')
+    return gulp.src('src/views/js/*.js')
         .pipe(uglify())
         .pipe(gulp.dest('dist/views/js'))
         .pipe(notify({ message: 'view-scripts task compeleted'}));
 });
 
 gulp.task('images', function() {
-    return gulp.src('img/*')
+    return gulp.src('src/img/*')
         .pipe(imagemin({optimizationLevel: 3, progressive: true, interlaced: true}))
         .pipe(gulp.dest('dist/img'))
         .pipe(notify({ message: "images task compeleted"}));
 });
 
 gulp.task('view-images', function() {
-    return gulp.src('views/images/*')
+    return gulp.src('src/views/images/*')
         .pipe(imagemin({optimizationLevel: 3, progressive: true, interlaced: true}))
         .pipe(gulp.dest('dist/views/images'))
         .pipe(notify({ message: "view-images task compeleted"}));
+});
+
+gulp.task('html', function() {
+    return gulp.src('src/*.html')
+        .pipe(gulp.dest('dist'));
+});
+gulp.task('view-html', function() {
+    return gulp.src('src/views/pizza.html')
+        .pipe(gulp.dest('dist/views'));
 });
 
 gulp.task('clean', function(cb) {
@@ -60,7 +66,7 @@ gulp.task('clean', function(cb) {
 });
 
 gulp.task('default', function() {
-    gulp.start('styles', 'scripts', 'images', 'view-styles', 'view-scripts', 'view-images');
+    gulp.start('styles', 'scripts', 'images', 'view-styles', 'view-scripts', 'view-images', 'html', 'view-html');
 });
 
 gulp.task('watch', function() {
