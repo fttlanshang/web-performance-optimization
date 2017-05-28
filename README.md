@@ -1,5 +1,5 @@
 ## Website Performance Optimization project
-The source code is in the `src` folder, while the production code is in the `dist` folder.
+The source code is in the `src` folder, while the production code(after minifying css and js files) is in the `dist` folder.
 
 ### Part 0: How to run
 1. Check out the repository.
