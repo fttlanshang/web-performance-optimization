@@ -10,7 +10,9 @@
   "license": "MIT",
   "devDependencies": {
     "del": "^2.2.2",
+    "fs": "0.0.1-security",
     "gulp": "^3.9.1",
+    "gulp-cheerio": "^0.6.2",
     "gulp-clean-css": "^3.4.0",
     "gulp-concat": "^2.6.1",
     "gulp-imagemin": "^3.2.0",
@@ -21,5 +23,8 @@
     "gulp-rename": "^1.2.2",
     "gulp-uglify": "^3.0.0",
     "jshint": "^2.9.4"
+  },
+  "dependencies": {
+    "gulp-replace": "^0.5.4"
   }
 }

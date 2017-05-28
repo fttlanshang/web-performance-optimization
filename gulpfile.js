@@ -8,7 +8,10 @@ var gulp = require('gulp'),
     livereload = require('gulp-livereload'),
     rename = require('gulp-rename'),
     notify = require('gulp-notify'),
-    del = require('del');
+    del = require('del'),
+    // cheerio = require('gulp-cheerio'),
+    replace = require('gulp-replace'),
+    fs = require('fs');
 
 gulp.task('styles', function(){
     return gulp.src('src/css/*.css')
@@ -52,13 +55,22 @@ gulp.task('view-images', function() {
         .pipe(notify({ message: "view-images task compeleted"}));
 });
 
-gulp.task('html', function() {
-    return gulp.src('src/*.html')
-        .pipe(gulp.dest('dist'));
-});
+// gulp.task('html', function() {
+//     return gulp.src('src/*.html')
+//         .pipe(gulp.dest('dist'));
+// });
 gulp.task('view-html', function() {
     return gulp.src('src/views/pizza.html')
         .pipe(gulp.dest('dist/views'));
+});
+
+gulp.task('inlineCSS', function() {
+    return gulp.src('src/index.html')
+        .pipe(replace(/<link href="css\/style.css" rel="stylesheet">/, function(s) {
+            var style = fs.readFileSync('src/css/style.css', 'utf-8');
+            return '<style>\n' + style + '\n</style>';
+        }))
+        .pipe(gulp.dest('dist'));
 });
 
 gulp.task('clean', function(cb) {
