@@ -55,10 +55,10 @@ gulp.task('view-images', function() {
         .pipe(notify({ message: "view-images task compeleted"}));
 });
 
-// gulp.task('html', function() {
-//     return gulp.src('src/*.html')
-//         .pipe(gulp.dest('dist'));
-// });
+gulp.task('html', function() {
+    return gulp.src('src/*.html')
+        .pipe(gulp.dest('dist'));
+});
 gulp.task('view-html', function() {
     return gulp.src('src/views/pizza.html')
         .pipe(gulp.dest('dist/views'));
